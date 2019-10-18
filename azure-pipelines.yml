@@ -20,11 +20,11 @@ stages:
   
   jobs:
 
-  # Build Azure Functions Infrastructure
+  # Build Infrastructure
   - template: zip.yml@builds
     parameters:
       name: 'Build_Azure_Functions_Infrastructure'
-      display_name: 'Build Azure Functions Infrastructure'
+      display_name: 'Build Infrastructure'
       pool:
         name: 'Hosted Windows 2019 with VS2019'
       project_title: 'Azure.Functions.DI.Infrastructure'
