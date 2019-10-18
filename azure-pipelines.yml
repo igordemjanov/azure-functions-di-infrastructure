@@ -1,0 +1,64 @@
+resources:
+  repositories:
+    - repository: builds
+      type: github
+      name: igordemjanov/azure-pipelines-build
+      ref: 'refs/heads/master'
+      endpoint: 'igordemjanov'
+    - repository: releases
+      type: github
+      name: igordemjanov/azure-pipelines-release
+      ref: 'refs/heads/master'
+      endpoint: 'igordemjanov'
+
+trigger:
+  branches:
+    include:
+    - master
+    - feature/*
+    - bug/*
+
+variables:
+  pool_name: 'Hosted Windows 2019 with VS2019'
+  project_title: 'Azure.Functions.DI.Infrastructure'
+  artifact_name: 'Infrastructure'
+
+stages:
+
+- stage: Build
+  displayName: Build
+  
+  jobs:
+
+  # Build Infrastructure
+  - template: zip.yml@builds
+    parameters:
+      name: 'Build_Infrastructure'
+      display_name: 'Build Infrastructure'
+      pool:
+        name: $(pool_name)
+      project_title: $(project_title)
+      artifact_name: $(artifact_name)
+
+- stage: Deploy_PA_Azure
+  displayName: 'Deploy to PA Azure'
+  dependsOn: 'Build'  
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+  jobs:
+
+  # Deploy Infrastructure
+  - template: arm-template.yml@releases
+    parameters:
+      name: 'Deploy_Infrastructure'
+      display_name: 'Deploy Infrastructure'
+      pool:
+        name: $(pool_name)
+      project_title: $(project_title)
+      environment: 'PA Azure'
+      azure_service_connection: 'igor-demjanov-proactive-azure'
+      resource_group: 'azure-functions-di-rg'
+      resource_group_location: 'North Europe'
+      template: 'template.json'
+      template_parameters: 'parameters.json'
+      artifact_name: $(artifact_name)

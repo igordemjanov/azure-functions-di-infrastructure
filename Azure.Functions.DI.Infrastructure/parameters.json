@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "subscriptionId": {
+      "value": "312604bd-a366-4284-97a3-ce065002c02a"
+    },
+    "functionAppName": {
+      "value": "azure-functions-di-fa"
+    },
+    "location": {
+      "value": "North Europe"
+    },
+    "hostingEnvironment": {
+      "value": ""
+    },
+    "hostingPlanName": {
+      "value": "azure-functions-di-app-service-plan"
+    },
+    "serverFarmResourceGroup": {
+      "value": "azure-functions-di-rg"
+    },
+    "alwaysOn": {
+      "value": false
+    },
+    "storageAccountName": {
+      "value": "azurefunctionsdistorage"
+    },
+    "applicationInsightName": {
+      "value": "azure-functions-di-ai"
+    },
+    "linuxFxVersion": {
+      "value": "2.2"
+    },
+    "sku": {
+      "value": "Free"
+    },
+    "skuCode": {
+      "value": "F1"
+    },
+    "workerSize": {
+      "value": "0"
+    },
+    "workerSizeId": {
+      "value": "0"
+    },
+    "numberOfWorkers": {
+      "value": "1"
+    }
+  }
+}
