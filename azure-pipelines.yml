@@ -41,7 +41,7 @@ stages:
       artifact_name: $(artifact_name)
 
 - stage: Deploy_PA_Azure
-  displayName: 'Deploy to PA Azure'
+  displayName: 'ProActive Azure'
   dependsOn: 'Build'  
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
