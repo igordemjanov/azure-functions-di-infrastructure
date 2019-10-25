@@ -56,53 +56,6 @@
     "keyVaultSku": {
       "value": "Standard"
     },
-    "keyVaultAccessPolicies": {
-      "value": [
-        {
-          "objectId": "59697d2e-80db-4acc-a66f-e7543ab8e4e1",
-          "tenantId": "444fed63-b488-4fc0-a8ed-c149caa35170",
-          "permissions": {
-            "keys": [
-              "Get",
-              "List",
-              "Update",
-              "Create",
-              "Import",
-              "Delete",
-              "Recover",
-              "Backup",
-              "Restore"
-            ],
-            "secrets": [
-              "Get",
-              "List",
-              "Set",
-              "Delete",
-              "Recover",
-              "Backup",
-              "Restore"
-            ],
-            "certificates": [
-              "Get",
-              "List",
-              "Update",
-              "Create",
-              "Import",
-              "Delete",
-              "Recover",
-              "Backup",
-              "Restore",
-              "ManageContacts",
-              "ManageIssuers",
-              "GetIssuers",
-              "ListIssuers",
-              "SetIssuers",
-              "DeleteIssuers"
-            ]
-          }
-        }
-      ]
-    },
     "tenant": {
       "value": "444fed63-b488-4fc0-a8ed-c149caa35170"
     },
