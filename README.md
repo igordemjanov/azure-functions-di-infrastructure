@@ -7,4 +7,5 @@ Following resources are deployed to Azure cloud services:
 - Function App
 - App Service Plan
 - Application Insights
+- Key Vault
 - Storage Account
