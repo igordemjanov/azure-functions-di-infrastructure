@@ -99,14 +99,16 @@
       "name": "[parameters('functionAppName')]",
       "type": "Microsoft.Web/sites",
       "kind": "functionapp",
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "location": "[parameters('location')]",
       "tags": {
       },
       "dependsOn": [
         "[concat('microsoft.insights/components/', parameters('applicationInsightName'))]",
         "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-        "[concat('Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]"
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
       ],
       "properties": {
         "name": "[parameters('functionAppName')]",
@@ -131,6 +133,10 @@
             {
               "name": "WEBSITE_RUN_FROM_PACKAGE",
               "value": "1"
+            },
+            {
+              "name": "KeyVaultName",
+              "value": "[parameters('keyVaultName')]"
             }
           ],
           "alwaysOn": "[parameters('alwaysOn')]"
@@ -196,7 +202,6 @@
         "enabledForDeployment": "[parameters('keyVaultEnabledForDeployment')]",
         "enabledForTemplateDeployment": "[parameters('keyVaultEnabledForTemplateDeployment')]",
         "enabledForDiskEncryption": "[parameters('keyVaultEnabledForDiskEncryption')]",
-        "accessPolicies": "[parameters('keyVaultAccessPolicies')]",
         "tenantId": "[parameters('tenant')]",
         "sku": {
           "name": "[parameters('keyVaultSku')]",
